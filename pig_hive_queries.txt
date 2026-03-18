@@ -1,0 +1,67 @@
+Pig and Hive Queries - Explanation on a Sample Dataset
+
+SAMPLE DATASET: student_marks.csv
+Columns: student_id, name, subject, marks
+
+
+-> APACHE PIG QUERIES
+
+
+Apache Pig uses a scripting language called Pig Latin to process large datasets.
+
+1. LOAD DATA
+   students = LOAD 'student_marks.csv' USING PigStorage(',')
+              AS (student_id:int, name:chararray, subject:chararray, marks:int);
+   Explanation: This loads the CSV file into a Pig relation called "students".
+                Each column is given a name and data type.
+
+2. FILTER ROWS
+   passed = FILTER students BY marks >= 50;
+   Explanation: This keeps only the rows where marks are 50 or above (passed students).
+
+3. GROUP BY
+   grouped = GROUP students BY subject;
+   Explanation: This groups all student records by their subject name.
+
+4. CALCULATE AVERAGE MARKS
+   avg_marks = FOREACH grouped GENERATE group, AVG(students.marks);
+   Explanation: For each subject group, this calculates the average marks scored.
+
+5. DUMP OUTPUT
+   DUMP avg_marks;
+   Explanation: This prints the final result to the screen.
+
+
+-> APACHE HIVE QUERIES
+
+
+Apache Hive uses HiveQL, which is similar to SQL, to query large datasets.
+
+1. CREATE TABLE
+   CREATE TABLE student_marks (
+     student_id INT,
+     name STRING,
+     subject STRING,
+     marks INT
+   )
+   ROW FORMAT DELIMITED
+   FIELDS TERMINATED BY ',';
+   Explanation: This creates a table in Hive with 4 columns matching our dataset.
+
+2. LOAD DATA INTO TABLE
+   LOAD DATA INPATH 'student_marks.csv' INTO TABLE student_marks;
+   Explanation: This loads the CSV file data into the Hive table.
+
+3. SELECT ALL RECORDS
+   SELECT * FROM student_marks;
+   Explanation: This retrieves and displays all rows from the table.
+
+4. FILTER QUERY
+   SELECT name, marks FROM student_marks WHERE marks >= 50;
+   Explanation: This shows only the names and marks of students who passed.
+
+5. AGGREGATE QUERY
+   SELECT subject, AVG(marks) AS average_marks
+   FROM student_marks
+   GROUP BY subject;
+   Explanation: This calculates the average marks for each subject.

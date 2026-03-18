@@ -1,0 +1,50 @@
+Basic Linux Commands and Their Descriptions
+
+
+1. ls
+   Lists all files and folders in the current directory.
+   Example: ls
+
+2. cd
+   Changes the current directory to another folder.
+   Example: cd Documents
+
+3. pwd
+   Prints the full path of the current working directory.
+   Example: pwd
+
+4. mkdir
+   Creates a new folder/directory.
+   Example: mkdir myfolder
+
+5. rm
+   Removes/deletes a file or directory.
+   Example: rm myfile.txt
+
+6. cp
+   Copies a file from one location to another.
+   Example: cp file1.txt file2.txt
+
+7. mv
+   Moves or renames a file or directory.
+   Example: mv oldname.txt newname.txt
+
+8. cat
+   Displays the contents of a file on the screen.
+   Example: cat myfile.txt
+
+9. chmod
+   Changes the permissions of a file or directory.
+   Example: chmod 755 script.sh
+
+10. grep
+    Searches for a specific word or pattern inside a file.
+    Example: grep "hello" myfile.txt
+
+11. touch
+    Creates a new empty file.
+    Example: touch newfile.txt
+
+12. man
+    Shows the manual/help page for any Linux command.
+    Example: man ls
